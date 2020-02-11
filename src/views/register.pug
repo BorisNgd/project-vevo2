@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>#{title}</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="description">
+            <h1>#{title}</h1>
+            <p>Renseignez les champs pour vous inscrire</p>
+        </div>
+        <div class="form-side">
+            <form action="/create" method="post">
+            <p style=color:red;>#{message}</p>
+                <div>Nom :</div>
+                <input type="text" id="name" name="name" require placeholder="Entrez votre nom">
+                <div>Email : </div>
+                <input type="email" name="email" id="email" require placeholder="Enter votre email">
+                <div>Mot de passe : </div>
+                <input type="password" name="password" id="password" require placeholder="Enter un mot de passe">
+                <div>Confirmez mot de passe : </div>
+                <input type="password" name="c_password" id="c_password" require placeholder="Confirmez votre mot de passe">
+                <input type="submit" value="Créer mon compte">
+                <div id="">
+                <p>Pas de compte ??? <a href="/login">Connectez-vous</a></p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    
+</body>
+</html>
