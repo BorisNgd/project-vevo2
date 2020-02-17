@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>#{title}</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="app">
-        <div class="description">
-            <h1>#{title}</h1>
-            <p>Welcome #{name}</p>
-              <p><a href="/logout">Logout</a></p>
-        </div>
+extends layout
 
-      
-    </div>
-    
-</body>
-</html>
+block variables
+    -var title = "Home"
+
+block content
+    h2.text-center HOME PAGE
+
+    .row
+        .offset-sm-2.col-sm-8
+            .jumbotron.text-center.
+                Welcome , please Sign In or Sign Up

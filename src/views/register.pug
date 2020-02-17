@@ -1,37 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>#{title}</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="app">
-        <div class="description">
-            <h1>#{title}</h1>
-            <p>Renseignez les champs pour vous inscrire</p>
-        </div>
-        <div class="form-side">
-            <form action="/create" method="post">
-            <p style=color:red;>#{message}</p>
-                <div>Nom :</div>
-                <input type="text" id="name" name="name" require placeholder="Entrez votre nom">
-                <div>Email : </div>
-                <input type="email" name="email" id="email" require placeholder="Enter votre email">
-                <div>Mot de passe : </div>
-                <input type="password" name="password" id="password" require placeholder="Enter un mot de passe">
-                <div>Confirmez mot de passe : </div>
-                <input type="password" name="c_password" id="c_password" require placeholder="Confirmez votre mot de passe">
-                <input type="submit" value="Créer mon compte">
-                <div id="">
-                <p>Pas de compte ??? <a href="/login">Connectez-vous</a></p>
-                </div>
-            </form>
+block variables
 
-        </div>
-    </div>
-    
-</body>
-</html>
+doctype html
+html
+head
+    meta(charset="utf-8")
+    meta(name = "viewport" content="width=device-width , initial-scale=1 , shrink-to-fit=0")
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/style.css")
+    title #{title}
+
+
+body
+    div.login-form.my-5
+        div.text CREER UN COMPTE
+        form(action="/create" method="post")
+
+            div.message 
+                p #{message}
+
+            div.field
+                div.img
+                    img(src="/images/user.svg"  alt="name" height="20" width="30")
+                input(type="text" placeholder="Name" name="name")
+
+            div.field
+                div.img
+                    img(src="/images/envelope.svg"  alt="email" height="20" width="30")
+                input(type="text" placeholder="Email" name="email")
+
+            div.field
+                div.img
+                    img(src="/images/lock.svg"  alt="email" height="20" width="30")
+                input(type="password" placeholder="Password" name="password" id="password")
+
+            div.field
+                div.img
+                    img(src="/images/lock.svg" alt="c_password" height="20" width="30")
+                input(type="password" placeholder="Confirm Password")
+
+            div.input
+                input(type="submit" value="Créer mon compte")
+
+            div.link Déja un compte ?
+                a(href="/login") &nbsp; Se connecter

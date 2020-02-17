@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+*{
+  margin: 0;
+  padding:0;
+  font-family: 'Poppins' , sans-serif;
+}
+
+body{
+    
+    background: url("/images/background.jpg");
+  }
+
+.nav-item a {
+      color: #FFFFFF;
+  }
+
+  .nav-item a:hover{
+      color: blanchedalmond;
+  }
