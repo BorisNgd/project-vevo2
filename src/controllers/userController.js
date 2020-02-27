@@ -67,7 +67,7 @@ module.exports = {
                     error: err
                 }); 
             }
-            return res.render('/login')
+            return res.render('login' , {message:'Account create with success'});
             return res.status(201).json(user);
 
         });
