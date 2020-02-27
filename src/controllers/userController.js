@@ -52,10 +52,6 @@ module.exports = {
      * userController.create()
      */
     create: function (req, res) {
-
-        if(req.body.password !== req.body.c_password){
-            return res.render('register' , {message: "Please enter identical passwords"})
-        }
         
         var user = new userModel({
             name : req.body.name,
@@ -66,18 +62,11 @@ module.exports = {
     
         user.save(function (err, user) {
             if (err) {
-                   // return res.redirect('/login/?message='+ "Error when creating user" );
-                return res.render('register' , {message:"Error when creating user"} );
-               /*  return res.status(500).json({
+                 return res.status(500).json({
                     message: 'Error when creating user',
                     error: err
-                }); */
+                }); 
             }
-            //res.render('login' , {message:"Compte créer avec succes connectez-vous"} );
-               // return res.redirect('/login/?message='+ "Compte crée avec succes" );
-                return res.render('login' , {message : "Compte crée avec succes"} )
-
-
             return res.status(201).json(user);
 
         });
@@ -137,38 +126,28 @@ module.exports = {
         var password = req.body.password;
         console.log(login, " —— ",password)
         if(!password || !login) {
-            return res.render('login' ,{message :"We need both an login and password"});
             return res.status(400).json({ message: "We need both an login and password." });
-
         }
         login = login.toLowerCase();
         userModel.findOne({email: login}, function(err, user) {
-    
             if (err) {
-                return res.render('login' ,{message :ErrorMessages.unknown});
                 return res.status(500).json({ message: ErrorMessages.unknown });
             }
             if (!user) {
-                return res.render('login' ,{message :"Woops, wrong login or password. Check your login : " + login});
                 return res.status(400).json({ message: "Woops, wrong login or password. Check your login : " + login });
             }
             if (user.authenticate(password)) {
-    
                 var authToken = AuthToken.create(login, user._id);
                 user.authToken = authToken;
                 user.save(function(err) {
                     if (err) {
-                        return res.render('login' ,{message :ErrorMessages.unknown});
                         return res.status(500).json({ message: ErrorMessages.unknown });
                     } else {
-                       // return res.status(200).json({ message: "OK", authToken: authToken , user});
-                    
-                       res.render('dashboard' , {user:user}); 
-                       
+                       return res.status(200).json({message: { message: "OK", authToken: authToken} , user}
+                        );
                     }
                 });
             } else {
-               return res.render('login' , {message:"Invalid Credentials"} ); 
                 return res.status(400).json({ message: 'Invalid Credentials' });
             }
         });
