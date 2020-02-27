@@ -67,6 +67,7 @@ module.exports = {
                     error: err
                 }); 
             }
+            return res.render('/login')
             return res.status(201).json(user);
 
         });
