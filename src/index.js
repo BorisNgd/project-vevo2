@@ -4,7 +4,7 @@ const path = require('path');
 const routes = require('./routes/userRoutes')
 const cors = require('cors');
 const app = express();
-const port = 4000 || process.event.PORT;
+const port = process.event.PORT;
 const mongoose = require('mongoose');
 
 app.use(bodyParser.json());
